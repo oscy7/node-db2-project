@@ -6,23 +6,23 @@ const cars = [
     model: 'X',
     mileage: 150000,
     title: 'clean',
-    trasmission: 'auto'
+    transmission: 'auto'
   },
   {
-    vin: '1234511',
+    vin: '33333',
     make: 'Tesla',
     model: '3',
     mileage: 1000,
     title: 'clean',
-    trasmission: 'auto'
+    transmission: 'auto'
   },
   {
-    vin: '1234522',
+    vin: '222222',
     make: 'Tesla',
     model: 'S',
     mileage: 5000,
     title: 'clean',
-    trasmission: 'auto'
+    transmission: 'auto'
   },
 ]
 
