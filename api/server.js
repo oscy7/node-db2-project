@@ -10,7 +10,7 @@ server.use('*', (req,res, next) => {
 })
 
 server.use((err,req,res,next) => {
-    res.status(err.status || 500).json({
+    res.status(err.status || 400).json({
         message: err.message
     })
 })

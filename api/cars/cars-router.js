@@ -1,16 +1,37 @@
 // DO YOUR MAGIC
 const express = require('express')
-
+const Car = require('./cars-model')
 const router = express.Router()
+const {
+    checkCarId,
+    checkVinNumberValid,
+    checkCarPayload,
+    checkVinNumberUnique
+} = require('./cars-middleware')
 
 router.get('/', async (req,res,next)=> {
-    res.json('getting all cars')
+    try{
+        const cars = await Car.getAll()
+        res.json(cars)
+    }catch(err){
+        next(err)
+    }
 })
-router.get('/:id', async (req,res,next)=> {
-    res.json()
+router.get('/:id', checkCarId, async (req,res,next)=> {
+    try{
+        const car = await Car.getById(req.params.id)
+        res.json(car)
+    }catch(err){
+        next(err)
+    }
 })
-router.post('/', async (req,res,next)=> {
-    res.json()
+router.post('/',checkCarPayload, checkVinNumberValid, checkVinNumberUnique, async (req,res,next)=> {
+    try {
+        const car = await Car.create(req.body)
+        res.json(car)
+    } catch(err){
+        next(err)
+    }
 })
 
 
